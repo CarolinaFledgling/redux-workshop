@@ -17,19 +17,21 @@ const Form = () => {
     };
     dispatch(addTask(newTask));
 
-    setValueInput("")
-  
+    setValueInput("");
   };
 
   return (
-    <div>
+    <form onSubmit={(e) => e.preventDefault()} className="form-container">
+      <label htmlFor="taskInput">Add task:</label>
       <input
+        id="taskInput"
         type="text"
         value={valueInput}
         onChange={(e) => setValueInput(e.target.value)}
+        placeholder="name of task"
       />
       <button onClick={handleAddTask}>Add task</button>
-    </div>
+    </form>
   );
 };
 

@@ -11,8 +11,9 @@ const ToDoView = () => {
     <div>
       {todos.map((todo) => {
         return (
-          <div key={todo.id}>
-            <p>{todo.taskName}</p>
+          <div className="container-task" key={todo.id} >
+            <p className="task-text">{todo.taskName}</p>
+            <button>Delete</button>
           </div>
         );
       })}

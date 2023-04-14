@@ -5,8 +5,8 @@ import ToDoView from "./features/todos/ToDoView";
 function App() {
   return (
     <div className="App">
-      <ToDoView />
       <Form/>
+      <ToDoView />
     </div>
   );
 }
