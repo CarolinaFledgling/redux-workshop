@@ -22,7 +22,7 @@ const Form = () => {
 
   return (
     <form onSubmit={(e) => e.preventDefault()} className="form-container">
-      <label htmlFor="taskInput">Add task:</label>
+      <label htmlFor="taskInput">Write task</label>
       <input
         id="taskInput"
         type="text"

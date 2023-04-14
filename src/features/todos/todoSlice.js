@@ -9,7 +9,7 @@ const initialState = {
     },
   ],
 };
- 
+
 const todoSlice = createSlice({
   name: "todo",
   initialState,
@@ -17,12 +17,23 @@ const todoSlice = createSlice({
   // redux pass automatically state to the method
   reducers: {
     addTask: (state, action) => {
-      console.log('hello')
+      console.log("add");
       state.toDos.push(action.payload);
+    },
+    removeTask: (state, action) => {
+      console.log("remove");
+      const filteredToDos = state.toDos.filter(
+        (todo) => todo.id !== action.payload
+      );
+      state.toDos = filteredToDos;
+    },
+
+    completedTask: (state, action) => {
+      console.log("remove");
     },
   },
 });
 
 export default todoSlice.reducer;
 
-export const { addTask } = todoSlice.actions;
+export const { addTask, removeTask, completedTask } = todoSlice.actions;
