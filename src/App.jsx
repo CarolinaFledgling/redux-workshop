@@ -1,18 +1,10 @@
-
 import "./App.css";
-import IceCreamView from "./features/icecream/IceCreamView";
-import UserView from "./features/users/UserView";
-import CakeView from "./features/cake/CakeView";
+import ToDoView from "./features/todos/ToDoView";
 
 function App() {
-
-
   return (
     <div className="App">
-      <CakeView />
-      <IceCreamView />
-      <UserView />
- 
+      <ToDoView />
     </div>
   );
 }

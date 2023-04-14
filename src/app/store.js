@@ -1,13 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import cakeReducer from "../features/cake/cakeSlice";
-import iceCreamReducer from "../features/icecream/iceCreamSlice";
-import userReducer from "../features/users/usersSlice";
+import todoSliceReducer from "../features/todos/todoSlice";
 
 const store = configureStore({
+  // here we have our slices
   reducer: {
-    cake: cakeReducer,
-    iceCram: iceCreamReducer,
-    user: userReducer,
+    todo: todoSliceReducer,
   },
 });
 
