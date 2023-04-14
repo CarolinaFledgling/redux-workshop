@@ -66,6 +66,12 @@ button:focus-visible {
   }
 }
 
+.task-text {
+  font-size: 16px;
+  margin-right: 25px;
+}
+
+
 .container-task {
   display: flex;
   align-items: center;
@@ -76,10 +82,7 @@ button:focus-visible {
   border-radius: 5px;
 }
 
-.task-text {
-  font-size: 16px;
-  margin-right: 25px;
-}
+
 
 .completed {
   text-decoration: line-through;

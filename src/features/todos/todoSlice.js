@@ -6,6 +6,7 @@ const initialState = {
       id: 1,
       taskName: "Kupic mleko",
       isCompleted: false,
+      isEdit: false,
     },
   ],
 };
@@ -29,11 +30,41 @@ const todoSlice = createSlice({
     },
 
     completedTask: (state, action) => {
-      console.log("remove");
+      console.log("toggle");
+      const findTask = state.toDos.find((todo) => todo.id === action.payload);
+      if (findTask) {
+        findTask.isCompleted = !findTask.isCompleted;
+      }
+    },
+    startEditTask: (state, action) => {
+      console.log("start edit");
+      const findEditTask = state.toDos.find(
+        (todo) => todo.id === action.payload
+      );
+      if (findEditTask) {
+        findEditTask.isEdit = true;
+      }
+    },
+
+    updateEditTask: (state, action) => {
+      const { id, taskName } = action.payload;
+      console.log("update, action.payload", action.payload);
+      const findEditTask = state.toDos.find((todo) => todo.id === id);
+      
+      if (findEditTask) {
+        findEditTask.taskName = taskName,
+        findEditTask.isEdit = false;
+      }
     },
   },
 });
 
 export default todoSlice.reducer;
 
-export const { addTask, removeTask, completedTask } = todoSlice.actions;
+export const {
+  addTask,
+  removeTask,
+  completedTask,
+  startEditTask,
+  updateEditTask,
+} = todoSlice.actions;
