@@ -17,6 +17,7 @@ const todoSlice = createSlice({
   // redux pass automatically state to the method
   reducers: {
     addTask: (state, action) => {
+      console.log('hello')
       state.toDos.push(action.payload);
     },
   },
