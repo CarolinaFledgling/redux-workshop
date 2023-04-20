@@ -22,8 +22,9 @@ const Form = () => {
 
   return (
     <form onSubmit={(e) => e.preventDefault()} className="form-container">
-      <label htmlFor="taskInput">Write task</label>
+      <label className="label" htmlFor="taskInput">Write task</label>
       <input
+      className="input"
         id="taskInput"
         type="text"
         value={valueInput}

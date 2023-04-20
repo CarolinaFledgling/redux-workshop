@@ -16,8 +16,8 @@ const DisplayTask = ({
         checked={todo.isCompleted}
         onChange={() => handleCompletedTask(todo.id)}
       />
-      <button onClick={() => handleDeleteTask(todo.id)}>Delete</button>
-      <button onClick={() => handleEditTask(todo.id)}>Edit</button>
+      <button className="delete-btn" onClick={() => handleDeleteTask(todo.id)}>Delete</button>
+      <button className="edit-btn " onClick={() => handleEditTask(todo.id)}>Edit</button>
     </div>
   );
 };

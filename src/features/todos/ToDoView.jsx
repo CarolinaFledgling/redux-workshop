@@ -50,9 +50,14 @@ const ToDoView = () => {
       .includes(searchQuery.toLocaleLowerCase());
   });
   return (
-    <div>
-      <label>Find task </label>
-      <input type="text" onChange={handleSearch} value={searchQuery} />
+    <div className="todo-container">
+      <label className="label">Find task </label>
+      <input
+        className="input"
+        type="text"
+        onChange={handleSearch}
+        value={searchQuery}
+      />
       {filteredTodos.map((todo) => {
         return (
           <div key={todo.id}>

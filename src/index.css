@@ -101,6 +101,20 @@ button:focus-visible {
   background-color: #c82333;
 }
 
+.edit-btn {
+  background-color: #428a21;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.edit-btn:hover {
+  background-color: #428a21b0;
+}
+
 /* Form component styles */
 .form-container {
   height: 100%;
@@ -127,3 +141,29 @@ button:focus-visible {
   color: white;
   cursor: pointer;
 }
+
+.todo-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+.input {
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+

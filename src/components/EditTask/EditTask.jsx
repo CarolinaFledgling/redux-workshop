@@ -9,6 +9,7 @@ const EditTask = ({ todo, valueInput, handleUpdatedTask, setValueInput }) => {
         value={valueInput}
         onChange={(e) => setValueInput(e.target.value)}
         placeholder="name of task"
+        className="task-input"
       />
       <button onClick={() => handleUpdatedTask(todo.id, valueInput)}>
         Save
