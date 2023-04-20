@@ -5,18 +5,29 @@ import {
   removeTask,
   startEditTask,
   updateEditTask,
+  setSearchQuery,
 } from "./todoSlice";
+import EditTask from "../../components/EditTask/EditTask";
+import DisplayTask from "../../components/DisplayTask/DisplayTask";
 
 const ToDoView = () => {
   const [valueInput, setValueInput] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // useSelector hook get the value from Redux store
+  const todos = useSelector((state) => state.todo.toDos);
+  const searchQuery = useSelector((state) => state.todo.searchQuery);
+  const dispatch = useDispatch();
+
+  // Event handlers
+  const handleSearch = (e) => {
+    const searchValue = e.target.value;
+    dispatch(setSearchQuery(searchValue));
+  };
 
   const handleUpdatedTask = (id, text) => {
     dispatch(updateEditTask({ id: id, taskName: text }));
   };
-  //where state.todo refers to the todo slice of the Redux store and
-  //toDos is the name of the toDos array in the initial state of that slice.
-  const todos = useSelector((state) => state.todo.toDos);
-  const dispatch = useDispatch();
 
   const handleDeleteTask = (id) => {
     dispatch(removeTask(id));
@@ -27,43 +38,38 @@ const ToDoView = () => {
   };
 
   const handleEditTask = (id) => {
+    const findTodo = todos.find((todo) => todo.id === id);
+    setValueInput(findTodo.taskName);
     dispatch(startEditTask(id));
   };
+
+  // Filtered list of todos in the search bar
+  const filteredTodos = todos.filter((todo) => {
+    return todo.taskName
+      .toLowerCase()
+      .includes(searchQuery.toLocaleLowerCase());
+  });
   return (
     <div>
-      {todos.map((todo) => {
+      <label>Find task </label>
+      <input type="text" onChange={handleSearch} value={searchQuery} />
+      {filteredTodos.map((todo) => {
         return (
-          <div className="container-task" key={todo.id}>
+          <div key={todo.id}>
             {todo.isEdit ? (
-              <>
-                <input
-                  id="taskInput"
-                  type="text"
-                  value={valueInput}
-                  onChange={(e) => setValueInput(e.target.value)}
-                  placeholder="name of task"
-                />
-                <button onClick={() => handleUpdatedTask(todo.id, valueInput)}>
-                  Save
-                </button>
-              </>
+              <EditTask
+                todo={todo}
+                valueInput={valueInput}
+                handleUpdatedTask={handleUpdatedTask}
+                setValueInput={setValueInput}
+              />
             ) : (
-              <>
-                <p
-                  className={`task-text ${todo.isCompleted ? "completed" : ""}`}
-                >
-                  {todo.taskName}
-                </p>
-                <input
-                  type="checkbox"
-                  checked={todo.isCompleted}
-                  onChange={() => handleCompletedTask(todo.id)}
-                />
-                <button onClick={() => handleDeleteTask(todo.id)}>
-                  Delete
-                </button>
-                <button onClick={() => handleEditTask(todo.id)}>Edit</button>
-              </>
+              <DisplayTask
+                todo={todo}
+                handleCompletedTask={handleCompletedTask}
+                handleDeleteTask={handleDeleteTask}
+                handleEditTask={handleEditTask}
+              />
             )}
           </div>
         );
@@ -71,5 +77,4 @@ const ToDoView = () => {
     </div>
   );
 };
-
 export default ToDoView;

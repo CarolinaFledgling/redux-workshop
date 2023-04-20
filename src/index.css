@@ -71,7 +71,6 @@ button:focus-visible {
   margin-right: 25px;
 }
 
-
 .container-task {
   display: flex;
   align-items: center;
@@ -80,9 +79,8 @@ button:focus-visible {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  margin-top: 50px;
 }
-
-
 
 .completed {
   text-decoration: line-through;

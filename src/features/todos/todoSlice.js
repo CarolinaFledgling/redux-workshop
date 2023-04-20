@@ -9,6 +9,7 @@ const initialState = {
       isEdit: false,
     },
   ],
+  searchQuery: "",
 };
 
 const todoSlice = createSlice({
@@ -50,11 +51,15 @@ const todoSlice = createSlice({
       const { id, taskName } = action.payload;
       console.log("update, action.payload", action.payload);
       const findEditTask = state.toDos.find((todo) => todo.id === id);
-      
+
       if (findEditTask) {
-        findEditTask.taskName = taskName,
-        findEditTask.isEdit = false;
+        (findEditTask.taskName = taskName), (findEditTask.isEdit = false);
       }
+    },
+    setSearchQuery: (state, action) => {
+     
+      console.log("search", action.payload, );
+      state.searchQuery = action.payload;
     },
   },
 });
@@ -67,4 +72,5 @@ export const {
   completedTask,
   startEditTask,
   updateEditTask,
+  setSearchQuery
 } = todoSlice.actions;
